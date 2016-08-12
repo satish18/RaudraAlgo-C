@@ -6,7 +6,7 @@ struct node
 {
 	int data;
 	struct node *next;
-	
+
 };
 
 void insertAtLast(struct node **head, int data)
@@ -17,7 +17,7 @@ void insertAtLast(struct node **head, int data)
 	p = *head;
 	temp->data = data;
 	temp->next = NULL;
-	
+
 	if (p == NULL)
 		*head = temp;
 
@@ -26,6 +26,7 @@ void insertAtLast(struct node **head, int data)
 		while(p->next != NULL)
 			p = p->next;
 		p->next = temp;
+
 	}	
 }
 
