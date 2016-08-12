@@ -22,22 +22,22 @@ void insertAtBeginning(struct node **head, int data)
 
 void findMiddleNode(struct node *head)
 {
-  // traverse the list two times.
+  	// traverse the list two times.
 	struct node *p = head;
-  // Traverse the list to find count.
-  int count = 0, i;
+  	// Traverse the list to find count.
+  	int count = 0, i;
 	while(p != NULL){
 		p = p->next;
-    count += 1;
+    	count += 1;
 	}
-  //Traverse list upto count/2
-  p = head; // assign p pointer to head node
-  for(i=0; i<count/2; i++)
-    p = p->next;
-  if (p != NULL)
-    printf("Middle element in a given list is %d\n", p->data);
-  else
-    printf("Middle Element Not Found\n");
+  	//Traverse list upto count/2
+  	p = head; // assign p pointer to head node
+  	for(i=0; i<count/2; i++)
+    	p = p->next;
+  	if (p != NULL)
+    	printf("Middle element in a given list is %d\n", p->data);
+  	else
+    	printf("Middle Element Not Found\n");
 }
 
 int main() {
