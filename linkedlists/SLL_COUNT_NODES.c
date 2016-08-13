@@ -1,3 +1,8 @@
+/* Given a single linked list, find count of nodes present in a list.
+   For example, if given list is 10 -> 20 -> 30 -> 40 -> 50,
+   then output should return 5
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
@@ -43,3 +48,7 @@ int main() {
 	countNodes(head);
 	return 1;
 }
+
+
+/* Time Complexity is O(n) -> count nodes in a list
+  because we need to traverse entire list */

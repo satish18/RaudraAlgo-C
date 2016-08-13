@@ -6,7 +6,7 @@ struct node
 {
 	int data;
 	struct node *next;
-
+	
 };
 
 /* Given a reference to the head of the list and insert a new
@@ -20,24 +20,28 @@ void insertAtBeginning(struct node **head, int data)
 	*head = temp;
 }
 
-void findMiddleNode(struct node *head)
+int deleteAtBeginning(struct node **head)
 {
-  	// traverse the list two times.
-	struct node *p = head;
-  	// Traverse the list to find count.
-  	int count = 0, i;
-	while(p != NULL){
-		p = p->next;
-    	count += 1;
+	struct node *p = *head;
+	int data;
+	if (p != NULL)
+	{
+		data = p->data;
+		*head = p->next;
+		p->next = NULL;
+		free(p);
 	}
-  	//Traverse list upto count/2
-  	p = head; // assign p pointer to head node
-  	for(i=0; i<count/2; i++)
-  		p = p->next;
-  	if (p != NULL)
-    	printf("Middle element in a given list is %d\n", p->data);
-  	else
-    	printf("Middle Element Not Found\n");
+	return data; 
+}
+
+// Traversing a list
+void printList(struct node *head)
+{
+	struct node *p = head;
+	while(p != NULL){
+		printf("%d ->", p->data);
+		p = p->next;
+	}
 }
 
 int main() {
@@ -47,6 +51,11 @@ int main() {
 	insertAtBeginning(&head, 30);
 	insertAtBeginning(&head, 40);
 	insertAtBeginning(&head, 50);
-	findMiddleNode(head);
+	printf("Before Deletion The list is\n");
+	printList(head);
+	printf("\nThe deleted node is = %d\n", deleteAtBeginning(&head));
+	printf("After deletion the list is\n");	
+	printList(head);
 	return 1;
+
 }

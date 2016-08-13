@@ -1,3 +1,7 @@
+/* Traverse the linked list using two pointers. Move one pointer by one step and 
+another pointer by two steps. When faster pointer moves to end of the list then
+slow pointer will reach middle of the list*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
@@ -22,22 +26,19 @@ void insertAtBeginning(struct node **head, int data)
 
 void findMiddleNode(struct node *head)
 {
-  	// traverse the list two times.
-	struct node *p = head;
-  	// Traverse the list to find count.
-  	int count = 0, i;
-	while(p != NULL){
-		p = p->next;
-    	count += 1;
+	struct node *fast_pointer, *slow_pointer;
+	fast_pointer = slow_pointer = head;
+	if (head != NULL)
+	{
+		while ( (fast_pointer != NULL) && (fast_pointer->next != NULL))
+		{
+			fast_pointer = fast_pointer->next->next;
+			slow_pointer = slow_pointer->next;
+		}
+		printf("The middle element is = %d\n", slow_pointer->data);
 	}
-  	//Traverse list upto count/2
-  	p = head; // assign p pointer to head node
-  	for(i=0; i<count/2; i++)
-  		p = p->next;
-  	if (p != NULL)
-    	printf("Middle element in a given list is %d\n", p->data);
-  	else
-    	printf("Middle Element Not Found\n");
+	else 
+		printf("The list is empty");
 }
 
 int main() {
@@ -47,6 +48,8 @@ int main() {
 	insertAtBeginning(&head, 30);
 	insertAtBeginning(&head, 40);
 	insertAtBeginning(&head, 50);
+	insertAtBeginning(&head, 60);
+	insertAtBeginning(&head, 70);
 	findMiddleNode(head);
 	return 1;
 }
