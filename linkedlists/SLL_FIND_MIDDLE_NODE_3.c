@@ -30,9 +30,10 @@ void findMiddleNode(struct node *head)
 	  'mid' pointer will move only when nodes count will 
 		become odd while traversing list */
 	 struct node *mid, *temp;
-	 mid = temp = head;
 	 int count = 0;
-	 while(temp != NULL) {
+	 mid = temp = head;	 
+	 while (temp != NULL) 
+	 {
 	 	if (count & 1)
 	 		mid = mid->next;
 	 	count += 1;
