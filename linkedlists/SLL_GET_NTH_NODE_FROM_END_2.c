@@ -1,10 +1,4 @@
-/* Algorithm
-   ---------
-
-   1. Find the length of a linked list
-   2. print (len-n+1)th node from the beginning of a linked list
-
-   */
+/* Recursive implementation of get nth node from end   */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -27,24 +21,12 @@ void insertAtBeginning(struct node **head, int data)
 
 void getNthFromLast(struct node *head, int n)
 {
-	 struct node *p = head;
-	 int len = 0, i;
-	 //find length of linked list
-	 while (p != NULL)
-	 {
-	 	len++;
-	 	p = p->next;
-	 }
-
-	 if (len < n)
+	 static int i = 0;
+	 if (head == NULL)
 	 	return;
-
-	 p = head;
-	 //get len-n+1 th node from beginning of list
-	 for(i = 1; i < (len-n+1); i++)
-	 	p = p->next;
-	 printf("%d rd node from last is = %d\n", n, p->data);	 
-	 return;
+	 getNthFromLast(head->next, n);
+	 if (++i == n)
+	 	printf("%d rd node from end is = %d\n", n, head->data);
 }
 
 int main() {
@@ -60,5 +42,5 @@ int main() {
 
 
 /* TIME COMPLEXITY is O(n)
-   SPACE COMPLEXITY is O(1)
+   SPACE COMPLEXITY is O(n)
 */
