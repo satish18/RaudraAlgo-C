@@ -23,8 +23,24 @@ void Enqueue(struct node **front, struct node **rear, int data)
 void printQueue(struct node *front)
 {
 	struct node *temp;
+	printf("\n");
 	for(temp=front; temp; temp=temp->next)
 		printf("%d ", temp->data);
+}
+
+void Dequeue(struct node **front, struct node **rear)
+{
+	struct node *temp = *front;
+	if(!(*front))
+	{
+		printf("Queue is Empty\n");
+		return;
+	}
+	if((*front) == (*rear))
+		(*front) = (*rear) = NULL;
+	else
+		(*front) = (*front)->next;
+	free(temp);
 }
 
 int main()
@@ -35,6 +51,8 @@ int main()
 	Enqueue(&front, &rear, 20);
 	Enqueue(&front, &rear, 30);
 	Enqueue(&front, &rear, 40);
+	printQueue(front);
+	Dequeue(&front, &rear);
 	printQueue(front);
 	return 0;
 }
