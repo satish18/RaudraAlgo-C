@@ -56,9 +56,8 @@ struct node *getCloneList(struct node *head)
 			temp->next = temp->next->next;
 			temp = temp->next;
 		}
-	}
+	}	
 	return result;
-
 }
 
 void printCloneList(struct node *copyList)
@@ -88,5 +87,4 @@ int main() {
 	copyList = getCloneList(head);
 	printCloneList(copyList);
 	return 1;
-
 }
