@@ -38,6 +38,7 @@ struct node *getCloneList(struct node *head)
 	}
 	result = head->next;
 	currPtr = head;
+	//assign random pointer to new created list
 	while(currPtr)
 	{
 		currPtr->next->random = currPtr->random->next;
@@ -48,7 +49,7 @@ struct node *getCloneList(struct node *head)
 	temp = head->next;
 	while(currPtr && temp)
 	{
-		currPtr->next = temp->next->next;
+		currPtr->next = temp->next;
 		currPtr = currPtr->next;
 		if(temp->next)
 		{
@@ -69,7 +70,6 @@ void printCloneList(struct node *copyList)
 		temp = temp->next;
 	}
 }
-
 
 
 int main() {
