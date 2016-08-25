@@ -18,7 +18,7 @@ void push(int stack[], int data, int size)
 
 void pop(int stack[])
 {
-	if(isEmpty())
+	if(isStackEmpty())
 	{
 		printf("stack Empty\n");
 		return;
@@ -33,7 +33,7 @@ void evaluateSpan(int price[], int n, int stock[])
 	stock[0] = 1;
 	for(int i=1; i<n; i++)
 	{
-		while(!isStckEmpty() && price[stack[top]] <= price[i])
+		while(!isStackEmpty() && price[stack[top]] <= price[i])
 			pop(stack);
 
 		stock[i] = (isStackEmpty() ? (i+1) : (i- stack[top]));
