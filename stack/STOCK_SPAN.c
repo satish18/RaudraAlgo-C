@@ -30,13 +30,13 @@ void evaluateSpan(int price[], int n, int stock[])
 {
 	int stack[n];
 	push(stack, 0, n);
-	stock[0] = 1;
+	stock[0] = 0;
 	for(int i=1; i<n; i++)
 	{
 		while(!isStackEmpty() && price[stack[top]] <= price[i])
 			pop(stack);
 
-		stock[i] = (isStackEmpty() ? (i+1) : (i- stack[top]));
+		stock[i] = (isStackEmpty() ? (i) : (i- stack[top]-1));
 		push(stack, i, n);
 	}
 }
