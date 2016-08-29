@@ -1,3 +1,4 @@
+/* least common anscestor of two nodes in binary search tree */
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -16,6 +17,7 @@ struct node *newNode(int data)
 	return temp;
 }
 
+
 struct node *RecursiveLCA(struct node *root, int p, int q)
 {
 	if(!root) return NULL;
@@ -27,6 +29,7 @@ struct node *RecursiveLCA(struct node *root, int p, int q)
 
 }
 
+/* Iterative solution to find least common anscetor of given two nodes */
 struct node *IterativeLCA(struct node *root, int p, int q)
 {
 	while(root)
