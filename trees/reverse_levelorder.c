@@ -38,23 +38,50 @@ int isQueueEmpty(int *rear, int *front)
 {
 	return ((*rear) == (*front));
 }
-
-void getLevelOrder(struct node *root)
+struct node **createStack(int *top)
 {
-	int front, rear;
+	struct node **stack = (struct node **)malloc(sizeof(struct node *)*MAX);
+	*top = -1;
+	return stack;
+}
+
+void push(struct node **stack, struct node *node, int *top)
+{
+	stack[++(*top)] = node;
+}
+
+struct node *pop(struct node **stack, int *top)
+{
+	return stack[(*top)--];
+}
+
+int isStackEmpty(int *top)
+{
+	return (*top == -1);
+}
+
+void printReverseLevelOrder(struct node *root)
+{
+	int front, rear, top;
 	if(root)
 	{
 		struct node **queue = createQueue(&front, &rear);
+		struct node **stack = createStack(&top);
 		struct node *temp;
 		enqueue(queue, &rear, root);
 		while(!isQueueEmpty(&rear, &front))
 		{
 			temp = dequeue(queue, &front);
-			printf("%d\t", temp->data);
-			if(temp->left)
-				enqueue(queue, &rear, temp->left);
+			push(stack, temp, &top);
 			if(temp->right)
 				enqueue(queue, &rear, temp->right);
+			if(temp->left)
+				enqueue(queue, &rear, temp->left);
+		}
+		while(!isStackEmpty(&top))
+		{
+			temp = pop(stack, &top);
+			printf("%d\t", temp->data);
 		}
 	}		
 }
@@ -68,7 +95,7 @@ int main()
 	root->left->left = newNode(40);
 	root->right->left = newNode(50);
 	root->right->right = newNode(60);
-	getLevelOrder(root);
+	printReverseLevelOrder(root);
 	return 0;
 }
 
