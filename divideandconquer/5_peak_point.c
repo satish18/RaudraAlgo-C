@@ -15,7 +15,7 @@ int findPeakIndex(int *arr, int size, int start, int end)
 
 int main()
 {
-	int *arr, size, X;
+	int *arr, size;
 	printf("Enter size of an array\n");
 	scanf("%d", &size);
 	//allocate memory for array
