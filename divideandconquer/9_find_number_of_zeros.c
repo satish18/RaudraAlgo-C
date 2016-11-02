@@ -24,7 +24,7 @@ int countNumberOfZeros(int *arr, int size)
 
 int main()
 {
-	int *arr, size, ele;
+	int *arr, size;
 	printf("Enter size of an array\n");
 	scanf("%d", &size);
 	//allocate memory for array
