@@ -8,9 +8,10 @@ int findPeakIndex(int *arr, int size, int start, int end)
 	if((middle == 0 || arr[middle - 1] <= arr[middle]) && 
 		(middle == size-1 || arr[middle+1] <= arr[middle]))
 		return middle;
-	else if(middle > 0 && arr[middle-1] > arr[middle])
-		return findPeakIndex(arr, size, start, (middle - 1));
-	return findPeakIndex(arr, size, (middle + 1), end);
+	else 
+		return (middle > 0 && arr[middle-1] > arr[middle])? 
+	findPeakIndex(arr, size, start, (middle - 1)): 
+	findPeakIndex(arr, size, (middle + 1), end);
 }
 
 int main()
