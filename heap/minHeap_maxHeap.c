@@ -1,3 +1,5 @@
+			// Convert Minheap to Maxheap
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -40,8 +42,12 @@ void printMaxHeap(int heap[], int size)
 
 int main()
 {
-	int heap[] = {3, 5, 9, 6, 8, 20, 10, 12, 18, 9};
-	int size = sizeof(heap) / sizeof(heap[0]);
+	int *heap, size;
+	printf("Enter size of the heap");
+	scanf("%d", &size);
+	printf("Enter elements to heap\n");
+	for(int index = 0; index< size; index++)
+		scanf("%d", &heap[index]);
 	convertToMaxHeap(heap, size);
 	printMaxHeap(heap, size);
 	return 0;
