@@ -14,10 +14,7 @@ void swap(int heap[], int a, int b)
 void MaxHeapify(int heap[], int index, int size)
 {
 	int left = 2*index + 1, right=2*index+2, greatest=index;
-	if (left<size && heap[left]>heap[index])
-		greatest = left;
-	else
-		greatest = index;
+	greatest = (left<size && heap[left]>heap[index])? left: index; 
 	if (right < size && heap[right]>heap[greatest])
 		greatest = right;
 	if (greatest != index)
