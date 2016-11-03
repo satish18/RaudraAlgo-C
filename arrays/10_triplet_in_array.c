@@ -34,9 +34,14 @@ int findTriplet(int arr[], int size, int sum)
 
 int main()
 {
-	int arr[] = {2, 5, 35, 8, 12, 9};
-	int sum = 25;
-	int size = sizeof(arr) / sizeof(arr[0]);
+	int *arr, size, sum;
+	printf("Enter size of the array\n");
+	scanf("%d", &size);
+	printf("Enter elements in array\n");
+	for(int index = 0; index < size; index++)
+		scanf("%d", &arr[index]);
+	printf("Enter the value of sum\n");
+	scanf("%d", &sum);
 	if(!findTriplet(arr, size, sum))
 		printf("Triplet not found");
 	return 0;

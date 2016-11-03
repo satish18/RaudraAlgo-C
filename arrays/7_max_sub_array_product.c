@@ -30,7 +30,12 @@ int maxSubArrayProduct(int arr[], int size)
 
 int main()
 {
-	int arr[] = {0, -1, -4, 0, 8, 0, -2};
-	int size = sizeof(arr) / sizeof(arr[0]);
+	int *arr, size;
+	printf("Enter size of the array\n");
+	scanf("%d", &size);
+	printf("Enter elements in array\n");
+	for(int index = 0; index < size; index++)
+		scanf("%d", &arr[index]);
 	printf("Maximum sub array product is = %d", maxSubArrayProduct(arr, size));
+	return 0;
 }

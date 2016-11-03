@@ -35,9 +35,15 @@ void printArray(int arr[], int size)
 
 int main()
 {
-	int arr[] = {1, 2, 3, 4, 5, 6, 7};
-	int size = sizeof(arr) / sizeof(arr[0]);
-	RotateLeft(arr, 3, size);
+	int *arr, size, d;
+	printf("Enter size of the array\n");
+	scanf("%d", &size);
+	printf("Enter elements in array\n");
+	for(int index = 0; index < size; index++)
+		scanf("%d", &arr[index]);
+	printf("Enter value of d\n");
+	scanf("%d", &d);
+	RotateLeft(arr, d, size);
 	printArray(arr, size);
 	return 0;
 }

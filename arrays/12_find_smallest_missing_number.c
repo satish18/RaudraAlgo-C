@@ -10,9 +10,8 @@ int findFirstSmallestMissing(int *arr, int start, int end)
 		return start;
 	int middle = (start + end) / 2;
 
-	if(arr[middle] > middle)
-		return findFirstSmallestMissing(arr, start, middle);
-	return findFirstSmallestMissing(arr, middle+1, end);
+	return (arr[middle] > middle)? findFirstSmallestMissing(arr, start, middle): 
+	findFirstSmallestMissing(arr, middle+1, end);
 }
 
 int main()

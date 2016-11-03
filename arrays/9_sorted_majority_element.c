@@ -25,9 +25,16 @@ int checkMajority(int arr[], int size, int majorityElement)
 
 int main()
 {
-	int arr[] = {1, 1, 4, 4, 4, 4, 5};
-	int size = (sizeof(arr)/sizeof(arr[0]));
-	checkMajority(arr, size, 4)?
-	printf("%d appears more than n/2 times", 4) : 
-	printf("%d doesn't appears more than n/2 times", 4);
+	int *arr, size, ele;
+	printf("Enter size of the array\n");
+	scanf("%d", &size);
+	printf("Enter elements in array\n");
+	for(int index = 0; index < size; index++)
+		scanf("%d", &arr[index]);
+	printf("Enter element to search\n");
+	scanf("%d", &ele);
+	checkMajority(arr, size, ele)?
+	printf("%d appears more than n/2 times", ele) : 
+	printf("%d doesn't appears more than n/2 times", ele);
+	return 0;
 }

@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void seperateOand1(int arr[], int size)
+void seperate0and1(int arr[], int size)
 {
 	int leftIndex = 0, rightIndex = size-1; 
 	while( leftIndex < rightIndex)
@@ -26,9 +26,13 @@ void printArray(int arr[], int size)
 
 int main()
 {
-	int arr[] = {0, 1, 1, 0, 1, 0, 1, 0, 0, 1};
-	int size = sizeof(arr) / sizeof(arr[0]);
-	seperateOand1(arr, size);
+	int *arr, size;
+	printf("Enter size of the array\n");
+	scanf("%d", &size);
+	printf("Enter elements in array\n");
+	for(int index = 0; index < size; index++)
+		scanf("%d", &arr[index]);
+	seperate0and1(arr, size);
 	printArray(arr, size);
 	return 0;
 }
