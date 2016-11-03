@@ -16,16 +16,20 @@ struct node *newNode(int data)
 	return temp;
 }
 
+void swap(struct node **left, struct node **right)
+{
+	struct node *temp = *left;
+	*left = *right;
+	*right = temp;
+}
+
 void getMirrorTree(struct node *root)
 {	
 	if(root)
 	{
 		getMirrorTree(root->left);
 		getMirrorTree(root->right);
-		struct node *temp;
-		temp = root->left;
-		root->left = root->right;
-		root->right = temp;
+		swap(&root->left, &root->right);
 	}
 }
 
