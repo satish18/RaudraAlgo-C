@@ -1,10 +1,10 @@
-#include<stdio.h>
+#include <stdio.h>
   
 void swap(int *a, int *b)
 {
-    *a = *a + *b;
-    *b = *a - *b;
-    *a = *a - *b;
+    int temp = *a;
+    *a = *b;
+    *b = temp;
 }
   
 void minHeapify(int arr[], int size, int index)
@@ -24,27 +24,27 @@ void minHeapify(int arr[], int size, int index)
 }
   
   
-void buildMinHeap(int arr[], int size) {
-    for(int i=size/2; i>=0; i--)
-        minHeapify(arr, size, i);         
+void buildMinHeap(int *arr, int size) {
+    for(int index = size/2; index >= 0; index--)
+        minHeapify(arr, size, index);         
 }  
 
-void printKElements(int minHeap[], int k)
+void printKElements(int *minHeap, int k)
 {
 
     // print k-largest elements
-    for(int i=0; i<k; i++)
-    	printf("%d\t", minHeap[i]);
+    for(int index = 0; index < k; index++)
+    	printf("%d\t", minHeap[index]);
 }
   
-void kLargestElements(int arr[], int size, int k)
+void kLargestElements(int *arr, int size, int k)
 {
     buildMinHeap(arr, k);
-    for(int i=k; i<size; i++)
+    for(int index = k; index < size; index++)
     {
-        if(arr[i] > arr[0])
+        if(arr[index] > arr[0])
         {
-            arr[0] = arr[i];
+            arr[0] = arr[index];
             minHeapify(arr, k, 0);
         }
     }
@@ -53,9 +53,14 @@ void kLargestElements(int arr[], int size, int k)
   
   
 int main() {
-    int arr[] = {16, 8, 18, 4, 12, 9, 5, 1};
-    int size = sizeof(arr)/sizeof(arr[0]);
-    int k = 3;
+    int *arr, size, k;
+    printf("Enter size of the heap");
+    scanf("%d", &size);
+    printf("Enter elements to heap\n");
+    for(int index = 0; index< size; index++)
+        scanf("%d", &arr[index]);
+    printf("Enter value of k\n");
+    scanf("%d", &k);
     kLargestElements(arr, size, k);
     return 0;
 }
