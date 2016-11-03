@@ -15,8 +15,12 @@ int getOddOccurrenceNumber(int arr[], int size)
 
 int main()
 {
-	int arr[] = {3, 4, 6, 5, 6, 3, 5, 4, 6, 3, 5, 5, 3};
-	int size = sizeof(arr) / sizeof(arr[0]);
+	int *arr, size;
+	printf("Enter size of the array\n");
+	scanf("%d", &size);
+	printf("Enter elements in array\n");
+	for(int index = 0; index < size; index++)
+		scanf("%d", &arr[index]);
 	int result = getOddOccurrenceNumber(arr, size); 
 	result ? printf("The odd occurence number is = %d", result): printf("Not found");
 	return 0;
