@@ -41,7 +41,7 @@ int isStackEmpty(int *top)
 
 void ZigZagTraversal(struct node *root)
 {
-	int flag=1, top1, top2, top;
+	int top1, top2, top;
 	struct node **stack1 = createStack(&top1);
 	struct node **stack2 = createStack(&top2);
 	struct node *temp;
