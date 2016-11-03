@@ -54,12 +54,7 @@ int main()
 	printf("Enter elements in heap\n");
 	for(index = 0; index < size; index++)
 		scanf("%d", &arr[index]);
-
-	//construct min-heap ( min-heapify)
 	buildMinHeap(arr, size);
-
-	//find max_element
-
 	printf("Maximum element in Min-heap is = %d", findMaxElement(arr, size));
 
 

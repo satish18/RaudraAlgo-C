@@ -68,16 +68,11 @@ int main()
 	for(int index = 0; index < size; index++)
 		scanf("%d", &arr[index]);
 
-	//build min heap
 	buildMinHeap(arr, size);
-
-
 	printf("Enter element to delete\n");
 	scanf("%d", &ele);
-
-	//delete particular element from heap
+	
 	deleteEleFromMinHeap(arr, &size, ele);
-
 	printMinHeap(arr, size);
 
 }

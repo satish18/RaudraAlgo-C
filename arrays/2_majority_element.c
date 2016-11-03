@@ -30,9 +30,14 @@ int isMajorityElement(int arr[], int size, int majorityElement)
 
 int main()
 {
-	int arr[] = {1, 4, 4, 1, 4, 4};
-	int size = (sizeof(arr)/sizeof(arr[0]));
+	int *arr, size;
+	printf("Enter size of the array\n");
+	scanf("%d", &size);
+	printf("Enter elements in array\n");
+	for(int index = 0; index < size; index++)
+		scanf("%d", &arr[index]);
 	int majorityElement = getMajorityElement(arr, size);
 	isMajorityElement(arr, size, majorityElement)?
 	printf("Majority Element is = %d", majorityElement) : printf("No majority Element");
+	return 0;
 }
