@@ -17,6 +17,28 @@ struct node *newNode(int data)
 	return temp;
 }
 
+void createPrevNode(struct node *root, struct node *head)
+{
+	struct node *temp = newNode(root->data);	
+	if(!head->left)
+	{
+		head->left = newNode(0);
+		head->left->right = head;
+		head->middle = temp;
+	}
+}
+
+void createNextNode(struct node *root, struct node *head)
+{
+	struct node *temp = newNode(root->data);;	
+	if(!head->right)
+	{
+		head->right = newNode(0);
+		head->right->left = head;
+		head->middle = temp;
+	}
+}
+
 void createLeafNode(struct node *root, struct node *head)
 {
 	if(!root->left && !root->right && !head->middle)
@@ -29,25 +51,14 @@ void createLeafNode(struct node *root, struct node *head)
 
 void TopViewDLL(struct node *root, struct node *head)
 {
-	struct node *temp = newNode(root->data);
 	if(root->left)
-	{		
-		if(!head->left)
-		{				
-			head->left = newNode(0);
-			head->left->right = head;
-			head->middle = temp;
-		}
+	{
+		createPrevNode(root, head);		
 		TopViewDLL(root->left, head->left);
 	}
 	if(root->right)
 	{
-		if(!head->right)
-		{
-			head->right = newNode(0);
-			head->right->left = head;
-			head->middle = temp;
-		}
+		createNextNode(root, head);
 		TopViewDLL(root->right, head->right);		
 	}
 	createLeafNode(root, head);
