@@ -25,8 +25,11 @@ int checkRotations(char *str1, char *str2)
 
 int main()
 {
-	char *str1 = "ABCD";
-	char *str2 = "BCDA";
+	char str1[100], str2[100];
+	printf("Enter string1");
+	scanf("%s", str1);
+	printf("Enter string2");
+	scanf("%s", str2);
 	if (checkRotations(str1, str2))
 		printf("Strings are rotations of each other\n");
 	else

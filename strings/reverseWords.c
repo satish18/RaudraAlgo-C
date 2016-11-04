@@ -45,7 +45,9 @@ void RevereseWords(char *str)
 
 int main()
 {
-	char str[] = "Raudra Edu Services";
+	char str[100];
+	printf("Enter string");
+	scanf("%s", str);
 	RevereseWords(str);
 	printf("%s\n", str);
 	return 0;

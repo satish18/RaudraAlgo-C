@@ -27,9 +27,9 @@ Method-2 (Using Hashing)
 char *removeDuplicates(char *str)
 {
 	int hash[COUNT] = {0};
-	int currentIndex = 0, finalIndex = 0;
+	int currentIndex, finalIndex = 0;
 	char temp;
-	while(str[currentIndex])
+	for(currentIndex = 0; str[currentIndex]; currentIndex++)
 	{
 		temp = str[currentIndex];
 		if(hash[temp] == 0)
@@ -37,7 +37,6 @@ char *removeDuplicates(char *str)
 			hash[temp] = 1;
 			str[finalIndex++] = str[currentIndex];
 		}
-		currentIndex++;
 	}
 	str[finalIndex] = '\0';
 	return str;
@@ -45,7 +44,9 @@ char *removeDuplicates(char *str)
 
 int main()
 {
-	char str[] = "gatexcel";
+	char str[100];
+	printf("Enter string");
+	scanf("%s", str);
 	printf("The final string after remove of duplicates is = %s\n", 
 		removeDuplicates(str));
 

@@ -32,7 +32,9 @@ char* removeDuplicates(char *str, char *lastRemoved)
 
 int main()
 {
-	char str[] = "adbbcbbbc";
+	char str[100];
+	printf("Enter Binary string");
+	scanf("%s", str);
 	char lastRemoved = '\0';
 	printf("%s", removeDuplicates(str, &lastRemoved));
 	return 0;

@@ -8,14 +8,14 @@ char getMaximumOccuringChar(char *str)
 	int temp[COUNT] = {0};
 	int len = strlen(str), max = -1, i;
 	char result;
-	for(i = 0; i < len; i++)
-		temp[str[i]]++;
-	for(i = 0; i < len; i++ )
+	for(index = 0; index < len; index++)
+		temp[str[index]]++;
+	for(index = 0; index < len; index++ )
 	{
-		if(max < temp[str[i]])
+		if(max < temp[str[index]])
 		{
-			max = temp[str[i]];
-			result = str[i];
+			max = temp[str[index]];
+			result = str[index];
 		}
 	}
 	return result;
@@ -23,7 +23,9 @@ char getMaximumOccuringChar(char *str)
 
 int main()
 {
-	char str[] = "GATEXCEL";
+	char str[100];
+	printf("Enter string");
+	scanf("%s", str);
 	printf("Maximum occuring character is = %c\n", getMaximumOccuringChar(str));
 	return 0;	
 }

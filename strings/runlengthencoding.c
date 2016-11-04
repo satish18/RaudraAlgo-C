@@ -11,12 +11,8 @@ char *runLengthEncoding(char *sourceStr)
 	for(index = 0; index < len; index++)
 	{
 		finalStr[j++] = sourceStr[index];
-		resultLen = 1;
-		while( index + 1 < len && sourceStr[index] == sourceStr[index+1])
-		{
-			resultLen++;
-			index++;
-		}
+		for(resultLen = 1; index + 1 < len && sourceStr[index] == sourceStr[index+1];
+			resultLen++, index++);
 		//copy resultLen in a character array count[]
 		sprintf( count, "%d", resultLen);
 
@@ -30,7 +26,9 @@ char *runLengthEncoding(char *sourceStr)
 
 int main()
 {
-	char str[] = "ssssaaaatiiisshh";
+	char str[100];
+	printf("Enter string");
+	scanf("%s", str);	
 	printf("%s\n", runLengthEncoding(str));
 	return 0;
 }
