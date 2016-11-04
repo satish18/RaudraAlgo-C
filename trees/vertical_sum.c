@@ -55,14 +55,6 @@ void VerticalSumBinaryTree(struct node *root)
 	}
 }
 
-void printTree(struct node *root)
-{
-	printf("%d\t", root->data);
-	printTree(root->left);
-	printTree(root->right);
-}
-
-
 int main()
 {
 	struct node *root = newNode(10);
