@@ -19,23 +19,18 @@ void insertAtBeginning(struct node **head, int data)
 
 void getNthFromLast(struct node *head, int n)
 {
-	 struct node *NthNode, *ref_ptr;
+	 struct node *NthNode, *refPtr;
 	 int count;
-	 NthNode = ref_ptr = head;
-	 for(count = 0; count < n; count++)
+	 NthNode = refPtr = head;
+	 for(count = 0; count <= n; count++)
 	 {
-	 	if (ref_ptr != NULL)
-	 		ref_ptr = ref_ptr->next;
+	 	if (refPtr)
+	 		refPtr = refPtr->next;
 	 	else return;
 	 }
-	 while (ref_ptr != NULL)
-	 {
-	 	NthNode = NthNode->next;
-	 	ref_ptr = ref_ptr->next;
-	 }
+	 for(;refPtr; refPtr = refPtr->next, NthNode = NthNode->next);
 	 if (NthNode)
 	 	printf("%d rd node from end is = %d", n, NthNode->data);
-	 return;	 
 }
 
 int main() {
@@ -46,6 +41,6 @@ int main() {
 	insertAtBeginning(&head, 40);
 	insertAtBeginning(&head, 50);
 	insertAtBeginning(&head, 60);
-	getNthFromLast(head, 1);
+	getNthFromLast(head, 3);
 	return 1;
 }
