@@ -5,7 +5,7 @@
 int MatrixChainMultiplication(int *arr, int size)
 {
 	int mat[size][size]; 
-    int i, j, k, L, q;
+    int i, j, k, L, cost;
     for (i = 1; i < size; i++)
         mat[i][i] = 0; 
 
@@ -17,9 +17,9 @@ int MatrixChainMultiplication(int *arr, int size)
             mat[i][j] = INT_MAX;
             for (k = i; k <= j-1; k++)
             {
-                q = mat[i][k] + mat[k+1][j] + arr[i-1]*arr[k]*arr[j];
-                if (q < mat[i][j])
-                    mat[i][j] = q;
+                cost = mat[i][k] + mat[k+1][j] + arr[i-1]*arr[k]*arr[j];
+                if (cost < mat[i][j])
+                    mat[i][j] = cost;
             }
         }
     }
