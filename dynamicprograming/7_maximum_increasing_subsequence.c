@@ -19,7 +19,6 @@ int MaximumSumIncreasingSubsequence(int *arr, int size)
     return maxSum; 
 }
  
-/* Driver program to test above functions */
 int main()
 {
 	int size, *arr;
