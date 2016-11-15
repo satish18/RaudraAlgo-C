@@ -16,7 +16,7 @@ void printSolution(int solution[SIZE][SIZE])
  
 int isSafe(int maze[SIZE][SIZE], int x, int y)
 {
-    return (x >= 0 && x < SIZE && y >= 0 && y < SIZE && maze[x][y] == 1) ? 1: 0;
+    return (x >= 0 && x < SIZE && y >= 0 && y < SIZE && maze[x][y] == 1);
 }
 
 int solveMaze(int maze[SIZE][SIZE], int x, int y, int solution[SIZE][SIZE])
