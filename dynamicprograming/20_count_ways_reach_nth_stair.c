@@ -24,3 +24,6 @@ int main()
 	printf("Number of ways to reach nth stair is = %d", countWaysReachNthStair(steps, m));
 	return 0;
 }
+
+//Time complexity: O(m*n);
+//Space complexity: O(n);
