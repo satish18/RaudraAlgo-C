@@ -35,3 +35,6 @@ int main()
 	printf("Minimum coin change is = %d", minCoinChange(coins, size, amount));
 	return 0;
 }
+
+//Time complexity: O(m * n)
+//Space complexity: O(m * n)

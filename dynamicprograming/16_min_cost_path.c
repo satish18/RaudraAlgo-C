@@ -39,3 +39,6 @@ int main()
 	printf("Minimum cost path is = %d\n", minCostPath(cost, 3, 3));
 	return 0;
 }
+
+//Time complexity: O(m * n)
+//Space complexity: O(m * n)
