@@ -6,7 +6,7 @@
 char getMaximumOccuringChar(char *str)
 {
 	int temp[COUNT] = {0};
-	int len = strlen(str), max = -1, i;
+	int len = strlen(str), max = -1, index;
 	char result;
 	for(index = 0; index < len; index++)
 		temp[str[index]]++;
@@ -23,9 +23,7 @@ char getMaximumOccuringChar(char *str)
 
 int main()
 {
-	char str[100];
-	printf("Enter string");
-	scanf("%s", str);
+	char str[] = "ravindra ravula";
 	printf("Maximum occuring character is = %c\n", getMaximumOccuringChar(str));
 	return 0;	
 }
