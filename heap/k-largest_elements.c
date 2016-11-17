@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
   
 void swap(int *a, int *b)
 {
@@ -25,22 +26,23 @@ void minHeapify(int arr[], int size, int index)
   
   
 void buildMinHeap(int *arr, int size) {
-    for(int index = size/2; index >= 0; index--)
+    int index;
+    for(index = size/2; index >= 0; index--)
         minHeapify(arr, size, index);         
 }  
 
 void printKElements(int *minHeap, int k)
 {
-
-    // print k-largest elements
-    for(int index = 0; index < k; index++)
+    int index;
+    for(index = 0; index < k; index++)
     	printf("%d\t", minHeap[index]);
 }
   
 void kLargestElements(int *arr, int size, int k)
 {
+    int index;
     buildMinHeap(arr, k);
-    for(int index = k; index < size; index++)
+    for(index = k; index < size; index++)
     {
         if(arr[index] > arr[0])
         {
@@ -53,11 +55,13 @@ void kLargestElements(int *arr, int size, int k)
   
   
 int main() {
-    int *arr, size, k;
-    printf("Enter size of the heap");
+    int *arr, size, k, index;
+    printf("Enter size of the heap\n");
     scanf("%d", &size);
+    //allocate memory
+    arr = (int *)malloc(sizeof(int) * size);
     printf("Enter elements to heap\n");
-    for(int index = 0; index< size; index++)
+    for(index = 0; index < size; index++)
         scanf("%d", &arr[index]);
     printf("Enter value of k\n");
     scanf("%d", &k);
