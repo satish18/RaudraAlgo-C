@@ -27,7 +27,8 @@ void MinHeapify(int *arr, int index, int size)
 
 void buildMinHeap(int *arr, int size)
 {
-	for(int index = size/2 -1; index >= 0; index-- )
+	int index;
+	for(index = size/2 -1; index >= 0; index-- )
 		MinHeapify(arr, index, size);
 }
 
@@ -51,13 +52,14 @@ void deleteEleFromMinHeap(int *arr, int *size, int ele)
 
 void printMinHeap(int *arr, int size)
 {
-	for(int index = 0; index < size; index++)
+	int index;
+	for(index = 0; index < size; index++)
 		printf("%d\t", arr[index]);
 }
 
 int main()
 {
-	int *arr, size, ele;
+	int *arr, size, ele, index;
 	printf("Enter size of heap\n");
 	scanf("%d", &size);
 
@@ -65,7 +67,7 @@ int main()
 	arr = (int *)malloc(sizeof(int) * size);
 
 	printf("Enter elements in heap\n");
-	for(int index = 0; index < size; index++)
+	for(index = 0; index < size; index++)
 		scanf("%d", &arr[index]);
 
 	buildMinHeap(arr, size);
