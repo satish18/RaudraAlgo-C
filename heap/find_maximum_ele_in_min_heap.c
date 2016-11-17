@@ -28,14 +28,15 @@ void MinHeapify(int *arr, int index, int size)
 
 void buildMinHeap(int *arr, int size)
 {
-	for(int index = size/2 -1; index >= 0; index-- )
+	int index;
+	for(index = size/2 -1; index >= 0; index-- )
 		MinHeapify(arr, index, size);
 }
 
 int findMaxElement(int *arr, int size)
 {
-	int Max = INT_MIN;
-	for(int index = (size + 1)/2; index < size; index++)
+	int Max = INT_MIN, index;
+	for(index = (size + 1)/2; index < size; index++)
 		if(arr[index] > Max)
 			Max = arr[index];
 	return Max;
