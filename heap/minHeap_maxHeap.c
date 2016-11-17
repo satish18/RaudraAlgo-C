@@ -5,8 +5,7 @@
 
 void swap(int heap[], int a, int b)
 {
-	int temp;
-	temp = heap[a];
+	int temp = heap[a];
 	heap[a] = heap[b];
 	heap[b] = temp;
 }
@@ -27,23 +26,27 @@ void MaxHeapify(int heap[], int index, int size)
 
 void convertToMaxHeap(int heap[], int size)
 {
-	for(int i=(size/2)-1; i >= 0; i--)
-		MaxHeapify(heap, i, size);
+	int index;
+	for(index = (size/2)-1; index >= 0; index--)
+		MaxHeapify(heap, index, size);
 }
 
 void printMaxHeap(int heap[], int size)
 {
-	for(int i=0; i<size; i++)
-		printf("%d\t", heap[i]);
+	int index;
+	for(index = 0; index < size; index++)
+		printf("%d\t", heap[index]);
 }
 
 int main()
 {
-	int *heap, size;
+	int *heap, size, index;
 	printf("Enter size of the heap");
 	scanf("%d", &size);
+	//allocate memory
+	heap = (int *)malloc(sizeof(int) * size);
 	printf("Enter elements to heap\n");
-	for(int index = 0; index< size; index++)
+	for(index = 0; index< size; index++)
 		scanf("%d", &heap[index]);
 	convertToMaxHeap(heap, size);
 	printMaxHeap(heap, size);
