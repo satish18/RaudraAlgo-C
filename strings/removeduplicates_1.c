@@ -44,9 +44,7 @@ char *removeDuplicates(char *str)
 
 int main()
 {
-	char str[100];
-	printf("Enter string");
-	scanf("%s", str);
+	char str[] = "ravindra ravula";
 	printf("The final string after remove of duplicates is = %s\n", 
 		removeDuplicates(str));
 
