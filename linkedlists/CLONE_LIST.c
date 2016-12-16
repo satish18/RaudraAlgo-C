@@ -10,81 +10,71 @@ struct node
 	
 };
 
-/* Given a reference to the head of the list and insert a new
-node at beginning of a list*/
-void insertAtBeginning(struct node **head, int data)
+struct node *newNode(int data)
 {
-	// allocate new node
-	struct node *temp = (struct node*) malloc(sizeof(struct node));
+	struct node *temp = (struct node *)malloc(sizeof(struct node));
 	temp->data = data;
-	temp->random = NULL;
-	temp->next = (*head);
-	*head = temp;
+	temp->next = temp->random = NULL;
+	return temp;
+}
+
+void setRandomPointers(struct node *current)
+{
+	while(current) {
+		current->next->random = current->random->next;
+		current = current->next->next;
+	}
+}
+
+void splitAlternateNodes(struct node *head, struct node **head1, struct node **head2)
+{
+	*head1 = head;
+	*head2 = head->next;
+	if(!head || !head->next)
+		return;
+	struct node *temp;	
+	while(head) {
+		temp = head->next;
+		head->next = temp ? temp->next: temp;
+		head = temp;
+	}
 }
 
 struct node *getCloneList(struct node *head)
 {
-	struct node *temp, *result, *currPtr, *nextPtr;
-	currPtr = head;
-	while(currPtr)
-	{
-		temp = (struct node *)malloc(sizeof(struct node));
-		temp->data = currPtr->data;
-		temp->random = NULL;
+	struct node *temp, *mainList, *cloneList, *currPtr;
+	currPtr = mainList = cloneList = head;
+	while(currPtr) {
+		temp = newNode(currPtr->data);
 		temp->next = currPtr->next;
-		nextPtr = currPtr->next;
 		currPtr->next = temp;
-		currPtr = nextPtr;
+		currPtr = temp->next;
 	}
-	result = head->next;
-	currPtr = head;
-	//assign random pointer to new created list
-	while(currPtr)
-	{
-		currPtr->next->random = currPtr->random->next;
-		currPtr = currPtr->next->next;
-	}
-	//restore the original and clone of linked lists
-	currPtr = head;
-	temp = head->next;
-	while(currPtr && temp)
-	{
-		currPtr->next = temp->next;
-		currPtr = currPtr->next;
-		if(temp->next)
-		{
-			temp->next = temp->next->next;
-			temp = temp->next;
-		}
-	}	
-	return result;
+	setRandomPointers(head);
+	splitAlternateNodes(head, &mainList, &cloneList);
+	return cloneList;
 }
 
-void printCloneList(struct node *copyList)
+void printCloneList(struct node *head)
 {
-	struct node *temp=copyList;
-	while(temp)
-	{
-		printf("%d->%d\n", temp->data, temp->random->data);
-		temp = temp->next;
-	}
+	for(; head; head = head->next)
+		printf("%d\t", head->data);
+	printf("\n");
 }
 
 
 int main() {
-	struct node *head = NULL, *copyList;
-	insertAtBeginning(&head, 10);
-	insertAtBeginning(&head, 20);
-	insertAtBeginning(&head, 30);
-	insertAtBeginning(&head, 40);
-	insertAtBeginning(&head, 50);
+	struct node *head = newNode(10);
+	head->next = newNode(20);
+	head->next->next = newNode(30);
+	head->next->next->next = newNode(40);
+	head->next->next->next->next = newNode(50);
 	head->random = head->next->next;
 	head->next->next->random= head->next->next->next->next;
 	head->next->next->next->next->random = head->next;
 	head->next->next->next->random = head->next->next;
 	head->next->random = head;
 	printCloneList(head);
-	copyList = getCloneList(head);
-	printCloneList(copyList);
+	printCloneList(getCloneList(head));
 	return 1;
 }
