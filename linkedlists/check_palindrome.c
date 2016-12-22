@@ -41,10 +41,12 @@ void reverseList(struct node **head)
 int isPalindrome(struct node *head)
 {
 	int result;
-	struct node *middleNode = findMiddleNode(head);
-	struct node *secondHalf;
-	if(!middleNode || !middleNode->next)
+	if(!head)
 		return 1;
+	struct node *middleNode = findMiddleNode(head);
+	if(!middleNode->next)
+		return (head->data == middleNode->data);
+	struct node *secondHalf;
 	secondHalf = middleNode->next;
 	middleNode->next = NULL;
 	reverseList(&secondHalf);
