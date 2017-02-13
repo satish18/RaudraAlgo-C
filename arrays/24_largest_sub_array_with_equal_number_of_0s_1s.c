@@ -1,37 +1,41 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void findMinMax(int *arr, int *sum_upto, int *max, int *min, int size)
+{
+    for(int index = 1; index < size; index++)
+    {
+        sum_upto[index] = sum_upto[index-1] + ((arr[index] == 0)? 
+                     -1: 1);
+        if (sum_upto[index] < (*min))
+            *min = sum_upto[index];
+        if (sum_upto[index] > (*max))
+            *max = sum_upto[index];
+    }
+}
+
 void findLargestSubArray(int *arr, int size)
 {
-	int maxSize = -1, startIndex, sumLeft[size], min = arr[0], max = arr[0], index;
-	sumLeft[0] = (arr[0] == 0)? -1: 1;
-    for (index = 1; index < size; index++)
-    {      
-        sumLeft[index] = sumLeft[index - 1] + ((arr[index] == 0)? 
-                     -1: 1);
-        if (sumLeft[index] < min)
-            min = sumLeft[index];
-        if (sumLeft[index] > max)
-            max = sumLeft[index];
-    }
+	int maxSize = -1, startIndex, sum_upto[size], 
+    min = arr[0], max = arr[0], index, temp;
+	sum_upto[0] = (arr[0] == 0)? -1: 1;
+    findMinMax(arr, sum_upto, &max, &min, size);
     int hash[max - min + 1];
     for(index = 0; index < max - min + 1; index++)
     	hash[index] = -1;
-    for (index = 0; index < size; index++)
-    {
-    	if (sumLeft[index] == 0)
-        {
+    for (index = 0; index < size; index++) {
+    	if (sum_upto[index] == 0) {
            maxSize = index + 1;
            startIndex = 0;
         }
-        if (hash[sumLeft[index] - min] == -1)
-            hash[sumLeft[index] - min] = index;
-        else
-        {
-            if ((index - hash[sumLeft[index] - min]) > maxSize)
+        temp = sum_upto[index] - min;
+        if (hash[temp] == -1)
+            hash[temp] = index;
+        else {
+            if ((index - hash[temp]) > maxSize)
             {
-                maxSize = index - hash[sumLeft[index] - min];
-                startIndex = hash[sumLeft[index] - min] + 1;
+                maxSize = index - hash[temp];
+                startIndex = hash[temp] + 1;
             }
         }
     }
